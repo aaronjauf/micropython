@@ -34,10 +34,15 @@ jobs:
     - name: Dir
       run: |
         dir
+        cd ports
+        dir
+        cd stm32
+        dir
+        cd ..
         cd build-ARDUINO_OPTA
         dir
     - name: Archive generated elf file
       uses: actions/upload-artifact@v4
       with:
         name: firmware.dfu
-        path: build-ARDUINO_OPTA/*.dfu
+        path: firmware.dfu
