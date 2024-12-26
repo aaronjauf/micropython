@@ -32,7 +32,7 @@ jobs:
     - name: Build ci_${{matrix.ci_func }}
       run: source tools/ci.sh && ci_${{ matrix.ci_func }}
     - name: Archive generated elf file
-        uses: actions/upload-artifact@v4
-        with:
-          name: firmware.dfu
-          path: build-ARDUINO_OPTA/firmware.dfu
+      uses: actions/upload-artifact@v4
+      with:
+        name: firmware.dfu
+        path: build-ARDUINO_OPTA/firmware.dfu
