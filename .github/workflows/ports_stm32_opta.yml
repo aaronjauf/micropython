@@ -35,4 +35,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: firmware.dfu
-        path: build-ARDUINO_OPTA/firmware.dfu
+        path: /home/runner/work/micropython/micropython/build-ARDUINO_OPTA/firmware.dfu
