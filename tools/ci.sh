@@ -207,7 +207,8 @@ function ci_esp32_build_s3_c3 {
 function ci_esp32_build_common_aaron {
     ci_esp32_build_common
 
-    make ${MAKEOPTS} -C ports/esp32 BOARD=ESP32_GENERIC
+    #make ${MAKEOPTS} -C ports/esp32 BOARD=ESP32_GENERIC
+    make ${MAKEOPTS} -C ports/esp32 USER_C_MODULES=../../../src/micropython.cmake BOARD=ESP32_GENERIC all
 }
 
 ########################################################################################
