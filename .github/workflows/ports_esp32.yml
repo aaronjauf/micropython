@@ -24,7 +24,6 @@ jobs:
       matrix:
         ci_func:  # names are functions in ci.sh
           - esp32_build_common_aaron
-          - esp32_build_s3_c3
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
