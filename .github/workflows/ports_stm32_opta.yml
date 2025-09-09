@@ -1,0 +1,47 @@
+name: stm32 port
+
+on:
+  push:
+  pull_request:
+    paths:
+      - '.github/workflows/*.yml'
+      - 'tools/**'
+      - 'py/**'
+      - 'extmod/**'
+      - 'shared/**'
+      - 'lib/**'
+      - 'drivers/**'
+      - 'ports/stm32/**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build_stm32:
+    strategy:
+      fail-fast: false
+      matrix:
+        ci_func:  # names are functions in ci.sh
+          - stm32_opta_build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install packages
+      run: source tools/ci.sh && ci_stm32_setup
+    - name: Build ci_${{matrix.ci_func }}
+      run: source tools/ci.sh && ci_${{ matrix.ci_func }}
+    - name: Dir
+      run: |
+        dir
+        cd ports
+        dir
+        cd stm32
+        dir
+        cd build-ARDUINO_OPTA
+        dir
+    - name: Archive generated elf file
+      uses: actions/upload-artifact@v4
+      with:
+        name: firmware.dfu
+        path: ports/stm32/build-ARDUINO_OPTA/firmware.dfu
