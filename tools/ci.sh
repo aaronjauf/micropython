@@ -500,7 +500,7 @@ function ci_stm32_misc_build {
     make ${MAKEOPTS} -C ports/stm32 BOARD=ARDUINO_GIGA
 }
 
-function stm32_opta_build {
+function ci_stm32_opta_build {
     make ${MAKEOPTS} -C mpy-cross
     make ${MAKEOPTS} -C ports/stm32 BOARD=ARDUINO_OPTA submodules
     make ${MAKEOPTS} -C ports/stm32 BOARD=ARDUINO_OPTA
